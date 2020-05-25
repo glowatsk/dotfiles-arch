@@ -106,7 +106,7 @@ client.unfocused        #000000 #000000 #000000 #000000 #000000
 
 gaps inner 5
 gaps outer 5
-smart_gaps on
+#smart_gaps on
 
 # Gaps mode
 set $mode_gaps Gaps: (o) outer, (i) inner
