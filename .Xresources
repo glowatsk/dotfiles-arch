@@ -18,7 +18,7 @@ URxvt.scrollBar: False
 rofi.theme: ~/.config/rofi/theme
 
 !Turn off ISO mode for cntrl shift
-URxvt.iso14755: true
+URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 !Urxvt Copy and Paste

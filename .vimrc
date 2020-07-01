@@ -8,6 +8,9 @@ endif
 set number
 set relativenumber
 
+"Set columns
+autocmd BufNewFile,BufRead *.py set colorcolumn=80,120
+
 "Auto save on run
 set autowrite
 
@@ -19,6 +22,9 @@ filetype plugin indent on
 
 "set the width of tabstop to 4 spaces
 set tabstop=4
+set expandtab
+set softtabstop=0 expandtab
+set shiftwidth=4
 
 "Use utf-8 Encoding
 set encoding=utf-8
@@ -35,38 +41,35 @@ let g:airline_powerline_fonts = 1
 "Plugins
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'kien/ctrlp.vim'
-Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'dylanaraps/pywal'
-Plug 'rust-lang/rust.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'cespare/vim-toml'
 Plug 'vim-syntastic/syntastic'
+Plug 'posva/vim-vue'
+Plug 'preservim/nerdtree'
+Plug 'sekel/vim-vue-syntastic'
+Plug 'sheerun/vim-polyglot'
+Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Setup the colorscheme
+set background=dark
+"colorscheme wal
 colorscheme wal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" close NERDTree after a file is opened
-let g:NERDTreeQuitOnOpen=0
-" show hidden files in NERDTree
-let NERDTreeShowHidden=1
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
-
 "Vim-Go
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
@@ -82,6 +85,26 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
 let g:go_auto_sameids = 1
+
+"Vim-Python mode
+let g:python_highlight_all = 1
+
+"vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_vue_checkers = ['eslint']
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+    let g:syntastic_vue_eslint_exec = local_eslint
+endif
+
+"FZF
+nnoremap <silent> <C-P> :FZF<cr>
+nnoremap <silent> <C-F> :Ag<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 "COC setup
@@ -199,6 +222,7 @@ xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -228,3 +252,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"Ranger Config
+let g:ranger_map_keys = 0
+map ` :NERDTreeToggle<CR>
