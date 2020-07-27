@@ -4,26 +4,35 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+"Autoread vimrc
+autocmd! BufWritePost ~/.vimrc source $MYVIMRC
+autocmd! BufWritePost .vimrc source $MYVIMRC
+
 "Set line numbers relative
 set number
 set relativenumber
 
-"Set columns
-autocmd BufNewFile,BufRead *.py set colorcolumn=80,120
-
 "Auto save on run
 set autowrite
 
+"Detect file changes on disk
+set autoread 
+
 "Syntax On
 syntax on
+
+"Set timeout for escape
+set timeoutlen=5
+set ttimeoutlen=5
 
 "Detect file types
 filetype plugin indent on
 
 "set the width of tabstop to 4 spaces
 set tabstop=4
+set autoindent
 set expandtab
-set softtabstop=0 expandtab
+set softtabstop=4 
 set shiftwidth=4
 
 "Use utf-8 Encoding
@@ -33,7 +42,7 @@ set encoding=utf-8
 set t_Co=256
 
 "Set system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "Set the airline fonts
 let g:airline_powerline_fonts = 1
@@ -57,6 +66,7 @@ Plug 'preservim/nerdtree'
 Plug 'sekel/vim-vue-syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/gruvbox-material'
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
@@ -64,7 +74,8 @@ call plug#end()
 "Setup the colorscheme
 set background=dark
 "colorscheme wal
-colorscheme wal
+let g:seoul256_background = 233
+colorscheme seoul256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
