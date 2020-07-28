@@ -21,10 +21,6 @@ set autoread
 "Syntax On
 syntax on
 
-"Set timeout for escape
-set timeoutlen=5
-set ttimeoutlen=5
-
 "Detect file types
 filetype plugin indent on
 
@@ -61,6 +57,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'cespare/vim-toml'
 Plug 'vim-syntastic/syntastic'
+Plug 'rust-lang/rust.vim'
 Plug 'posva/vim-vue'
 Plug 'preservim/nerdtree'
 Plug 'sekel/vim-vue-syntastic'
