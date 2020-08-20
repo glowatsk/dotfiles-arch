@@ -24,6 +24,17 @@ syntax on
 "Detect file types
 filetype plugin indent on
 
+"Set Terminal Colors
+if (has("termguicolors"))
+  set termguicolors
+endif
+"Setup tmux colors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 "set the width of tabstop to 4 spaces
 set tabstop=4
 set autoindent
@@ -33,9 +44,6 @@ set shiftwidth=4
 
 "Use utf-8 Encoding
 set encoding=utf-8
-
-"Load colorscheme
-set t_Co=256
 
 "Set system clipboard
 set clipboard=unnamedplus
@@ -48,7 +56,6 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dylanaraps/pywal'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
@@ -64,15 +71,23 @@ Plug 'sekel/vim-vue-syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/gruvbox-material'
 Plug 'junegunn/seoul256.vim'
+Plug 'franbach/miramare'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Setup the colorscheme
+"set a colorscheme
 set background=dark
-"colorscheme wal
-let g:seoul256_background = 233
-colorscheme seoul256
+"let g:seoul256_background = 233
+"let g:gruvbox_material_background = 'hard'
+if exists("$TMUX")
+    colorscheme miramare
+    let g:airline_theme = 'miramare'
+else
+    colorscheme wal
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
