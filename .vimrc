@@ -41,12 +41,14 @@ set autoindent
 set expandtab
 set softtabstop=4 
 set shiftwidth=4
+set backspace=indent,eol,start
+set smarttab
 
 "Use utf-8 Encoding
 set encoding=utf-8
 
 "Set system clipboard
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 "Set the airline fonts
 let g:airline_powerline_fonts = 1
@@ -73,6 +75,10 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'junegunn/seoul256.vim'
 Plug 'franbach/miramare'
 Plug 'dylanaraps/wal.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'nvie/vim-flake8'
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
@@ -89,6 +95,9 @@ else
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Vim Fugitive Conflict Resolution
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin settings
@@ -111,6 +120,8 @@ let g:go_auto_sameids = 1
 
 "Vim-Python mode
 let g:python_highlight_all = 1
+"flake8 on save
+autocmd BufWritePost *.py call flake8#Flake8()
 
 "vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -276,6 +287,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-"Ranger Config
+"File Browsing
 let g:ranger_map_keys = 0
 map ` :NERDTreeToggle<CR>

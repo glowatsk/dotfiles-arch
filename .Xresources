@@ -14,8 +14,8 @@ Xft.lcdfilter: lcddefault
 !ScrollBar
 URxvt.scrollBar: False
 
-!Rofi Theme
-rofi.theme: ~/.config/rofi/theme
+!Letter Space
+URxvt.letterSpace: -1
 
 !Turn off ISO mode for cntrl shift
 URxvt.iso14755: false
