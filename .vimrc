@@ -30,6 +30,7 @@ if (has("termguicolors"))
 endif
 "Setup tmux colors
 if exists('+termguicolors')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
@@ -60,6 +61,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -71,28 +73,30 @@ Plug 'posva/vim-vue'
 Plug 'preservim/nerdtree'
 Plug 'sekel/vim-vue-syntastic'
 Plug 'sheerun/vim-polyglot'
-Plug 'sainnhe/gruvbox-material'
-Plug 'junegunn/seoul256.vim'
-Plug 'franbach/miramare'
-Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 
+Plug 'romainl/Apprentice', { 'branch': 'fancylines-and-neovim' }
+Plug 'sjl/badwolf'
+Plug 'franbach/miramare'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set a colorscheme
-set background=dark
 "let g:seoul256_background = 233
 "let g:gruvbox_material_background = 'hard'
 if exists("$TMUX")
-    colorscheme miramare
-    let g:airline_theme = 'miramare'
+    colorscheme apprentice
+    let g:airline_theme = 'apprentice'
 else
-    colorscheme wal
+    colorscheme apprentice
+    let g:airline_theme = 'apprentice'
 endif
+
+"set a colorscheme
+set background=dark
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim Fugitive Conflict Resolution

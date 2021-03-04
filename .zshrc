@@ -98,6 +98,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+#Apply pywal
+(cat ~/.cache/wal/sequences &)
+
 export PATH=$HOME/.local/bin:$PATH
 source /usr/share/nvm/init-nvm.sh
 export PATH=$HOME/.cargo/bin:$PATH

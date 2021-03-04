@@ -16,7 +16,7 @@ set $mod Mod4
 
 floating_modifier $mod
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
 
@@ -146,10 +146,8 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#Pywal Set Up
-
 # Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
