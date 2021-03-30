@@ -8,8 +8,10 @@
     "json",
     "graphql",
     "css",
-    "markdown"
   ],
   "python.jediEnabled": false,
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow": ["*/workflows/*"],
+  },
 }
