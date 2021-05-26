@@ -12,6 +12,9 @@ autocmd! BufWritePost .vimrc source $MYVIMRC
 set number
 set relativenumber
 
+"Turn off matching braces
+let g:loaded_matchparen=1
+
 "Auto save on run
 set autowrite
 
@@ -68,7 +71,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'cespare/vim-toml'
 Plug 'vim-syntastic/syntastic'
-Plug 'rust-lang/rust.vim'
 Plug 'posva/vim-vue'
 Plug 'preservim/nerdtree'
 Plug 'sekel/vim-vue-syntastic'
@@ -79,24 +81,31 @@ Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 
 Plug 'romainl/Apprentice', { 'branch': 'fancylines-and-neovim' }
-Plug 'sjl/badwolf'
 Plug 'franbach/miramare'
+Plug 'joshdick/onedark.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'KeitaNakamura/neodark.vim'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set background=dark
+set background=light
 "let g:seoul256_background = 233
 "let g:gruvbox_material_background = 'hard'
+"if exists("$TMUX")
+"    let g:neodark#background = '#202020'
+"    colorscheme neodark
+"    let g:airline_theme = 'neodark'
+"else
+"    colorscheme onedark
+"    let g:airline_theme = 'neodark'
+"endif
 if exists("$TMUX")
-    colorscheme apprentice
-    let g:airline_theme = 'apprentice'
-else
-    colorscheme apprentice
-    let g:airline_theme = 'apprentice'
+    colorscheme solarized8
+    let g:airline_theme = 'solarized'
 endif
 
-"set a colorscheme
-set background=dark
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim Fugitive Conflict Resolution
